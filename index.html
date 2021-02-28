@@ -1,118 +1,191 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no" />
     <title>0. Design</title>
-    <link
-      type="text/css"
-      href="https://uicdn.toast.com/tui-color-picker/v2.2.6/tui-color-picker.css"
-      rel="stylesheet"
-    />
+    <link type="text/css" href="https://uicdn.toast.com/tui-color-picker/v2.2.6/tui-color-picker.css" rel="stylesheet" />
     <!-- <link type="text/css" href="../dist/tui-image-editor.css" rel="stylesheet" /> -->
     <link type="text/css" href="https://nhn.github.io/tui.image-editor/latest/dist/tui-image-editor.css" rel="stylesheet" />
     <style>
-      @import url(http://fonts.googleapis.com/css?family=Noto+Sans);
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-      }
-        
-
+        @import url(http://fonts.googleapis.com/css?family=Noto+Sans);
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
     </style>
-  </head>
-  <body>
-    
-      <div id="tui-image-editor-container"></div>
-      
-    <script
-      type="text/javascript"
-      src="https://api-storage.cloud.toast.com/v1/AUTH_e18353c4ea5746c097143946d0644e61/toast-ui-cdn/tui-image-editor/v3.11.0/example/fabric-v4.2.0.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://uicdn.toast.com/tui.code-snippet/v1.5.0/tui-code-snippet.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://uicdn.toast.com/tui-color-picker/v2.2.6/tui-color-picker.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"
-    ></script>
+</head>
+
+<body>
+    <div id="tui-image-editor-container"></div>
+    <script type="text/javascript" src="https://api-storage.cloud.toast.com/v1/AUTH_e18353c4ea5746c097143946d0644e61/toast-ui-cdn/tui-image-editor/v3.11.0/example/fabric-v4.2.0.js"></script>
+    <script type="text/javascript" src="https://uicdn.toast.com/tui.code-snippet/v1.5.0/tui-code-snippet.min.js"></script>
+    <script type="text/javascript" src="https://uicdn.toast.com/tui-color-picker/v2.2.6/tui-color-picker.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
     <script type="text/javascript" src="https://nhn.github.io/tui.image-editor/latest/dist/tui-image-editor.js"></script>
     <!-- <script type="text/javascript" src="../dist/tui-image-editor.js"></script> -->
     <script type="text/javascript" src="https://nhn.github.io/tui.image-editor/latest/examples/js/theme/white-theme.js"></script>
     <script type="text/javascript" src="https://nhn.github.io/tui.image-editor/latest/examples/js/theme/black-theme.js"></script>
-      
-            <style>
-          /* To prevent image jumping issue required to override top position of .tui-image-editor.*/
-        .tui-image-editor {
-        top: 0px !important;
-        }
-                
-        .tui-image-editor-container .svg_ic-menu {
-                width: 16px;
-                height: 16px;
-            }
-                
-                .tui-image-editor-header-logo{
-                    color: white;
-                }            
-}
-      </style>
-      
-      
-       <script
-      src="https://code.jquery.com/jquery-3.5.1.min.js"
-      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-      crossorigin="anonymous"></script>
-      
-      <script type="text/javascript" src="https://manuelstofer.github.io/pinchzoom/dist/pinch-zoom.umd.js"></script>
-      
-      
-      
-    <script src="js/panZoom.js"></script>
-      
-      
-    <script>
-      // Image editor
-      var imageEditor = new tui.ImageEditor('#tui-image-editor-container', {
-        includeUI: {
-          loadImage: {
-            path: 'https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
-            // path: 'img/sampleImage2.png',
-            name: 'SampleImage',
-          },
-          theme: blackTheme, // or whiteTheme
-          initMenu: 'draw',
-          menuBarPosition: 'bottom',
-        },
-        cssMaxWidth: 700,
-        cssMaxHeight: 500,
-        usageStatistics: false,
-      });
-      window.onresize = function () {
-        imageEditor.ui.resizeEditor();
-      };
-        
-        
-        imageEditor.on('objectActivated', function(props) {
-            
-        });
-
-     
     
+    
+    <style>
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #2e2e2e; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #464242; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+</style>
+    
+    <style>
+    /* To prevent image jumping issue required to override top position of .tui-image-editor.*/
+        
+        .tui-image-editor {
+            top: 0px !important;
+        }
+        
+        .tui-image-editor-container .svg_ic-menu {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .tui-image-editor-controls {
+            /*position: absolute;
+              display: block;
+              top: 0;
+              left: 0;
+              width: calc(120vw);
+              max-height: 750px;
+              margin: 0;
+              padding-top: 1px;
+              background: #abc;
+              overflow-y: auto;
+              overflow-x: hidden;
+              transform: rotate(-90deg) translateY(-100px);
+              transform-origin: right top;*/
+        }
+        
+        .tui-image-editor-controls > .card{
+              /*display: block;
+              transform: rotate(90deg);
+              transform-origin: right top; */
+        }
+        
+        .tui-image-editor-container.left .tui-image-editor-controls {
+            width: 64px;
+            height: 100%;
+            display: list-item;
+            overflow-x: hidden; /* broken tooltips*/
+            overflow-y: scroll;
+            top: 0;
+        }
+        
+/*
+        .tui-image-editor-item:hover:after{
+            border-bottom:0;
+            display:block !important;
+            position:absolute !important;
+            width:10em !important;
+            border:1px solid red;
+            background-color:#feffe1; color:#6e7044;
+            text-align: center;
+            margin:-1.8em 0 0 -1.6em;
+        }
+*/
+        /* broken tooltips ref, http://jsfiddle.net/1bz0v4ny/  . http://jsfiddle.net/dsczxkpf/4/ */
+        li.tui-image-editor-item:after, li.tui-image-editor-item:before{
+          display: none !important;
+        }
+        
+        .tooltip{
+            position: absolute;
+            left: 60px;
+/*            background-color: red;*/
+            background-color: #2f2f2f;
+            z-index: 100;
+            
+            display: inline-block;
+            color: #fff;
+            padding: 5px 8px;
+            font-size: 11px;
+            font-weight: lighter;
+            border-radius: 3px;
+            max-height: 23px;
+            top: -25px;
+            min-width: 24px;
+        }
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="js/panZoom.js"></script>
+    <script>
+        // Image editor
+        var imageEditor = new tui.ImageEditor('#tui-image-editor-container', {
+            includeUI: {
+                loadImage: {
+                    path: 'https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+//                    path: 'img/sampleImage2.png' ,
+                    name: 'SampleImage'
+                , }
+                , theme: blackTheme, // or whiteTheme
+                initMenu: 'draw'
+                , menuBarPosition: 'left'
+            , }
+            , cssMaxWidth: 700
+            , cssMaxHeight: 500
+            , usageStatistics: false
+        , });
+        window.onresize = function () {
+           // imageEditor.ui.resizeEditor();
+        };
+        
+        imageEditor.on('objectActivated', function (props) {});
+        
         new IEditorPanZoom(imageEditor).enable();
         
-    
+        $(function(){
+            
+            
+            // FIX TOOLTIPS OVER SCROLLBAR
+            $('li.tui-image-editor-item').each(function(){
+                var text = $(this).attr('tooltip-content');
+                if(text){
+                    var el = $('<span class="tooltip" style="display: none">'+text+'</span>'); 
+                    $("body").append(el);
+                    $(this).data('c-tooltip', el);    
+                }
+                
+            });
+            
+          $('li.tui-image-editor-item').mouseover(function(event) {
+                 var el = $(this).data('c-tooltip');
+                 if(el){
+                     el.css('top', (event.pageY) + 'px');
+                     el.show();
+                 }
+
+             }).mouseleave(function() {
+                 var el = $(this).data('c-tooltip');
+                 if(el) $(this).data('c-tooltip').hide();
+             }) 
+            
+        })
+        
     </script>
-      
-<!--      <script src="https://hammerjs.github.io/dist/hammer.js"></script>-->
-      
-      
-      <span id="count">XXX</span>
-  </body>
+</body>
 </html>
