@@ -34,6 +34,7 @@
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
 }
 
 /* Track */
@@ -60,8 +61,8 @@
         }
         
         .tui-image-editor-container .svg_ic-menu {
-            width: 24px;
-            height: 24px;
+/*            width: 24px;*/
+/*            height: 24px;*/
         }
         
         .tui-image-editor-controls {
@@ -93,6 +94,20 @@
             overflow-x: hidden; /* broken tooltips*/
             overflow-y: scroll;
             top: 0;
+        }
+        
+          
+        .tui-image-editor-container.bottom .tui-image-editor-controls {
+            width: 100%;
+            display: list-item;
+            overflow-x: scroll; /* broken tooltips*/
+            overflow-y: hidden;
+            left: 0;
+        }
+        
+        .tui-image-editor-container.bottom .tui-image-editor-menu{
+            display: list-item;
+            margin-top: 10px;
         }
         
 /*
@@ -144,7 +159,7 @@
                 , }
                 , theme: blackTheme, // or whiteTheme
                 initMenu: 'draw'
-                , menuBarPosition: 'left'
+                , menuBarPosition: 'bottom'
             , }
             , cssMaxWidth: 700
             , cssMaxHeight: 500
