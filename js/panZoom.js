@@ -22,7 +22,7 @@ function IEditorPanZoom(editor) {
     var imageEditor = editor;
     
     // zoom
-    let hypo = undefined;
+    var hypo = undefined;
     var pinchLast = 1;
     
     // pan
@@ -152,7 +152,7 @@ function IEditorPanZoom(editor) {
     };
 
     function onTouchEnd(event) {
-        console.log('onTouchEnd');
+        console.log('onTouchEnd XXX');
 
         hypo = undefined;
         pinchLast = 1;
@@ -180,7 +180,7 @@ function IEditorPanZoom(editor) {
     
     function isPanDisabled(event){
         
-        if(event && event.shiftKey) return false;
+        if(event && event.shiftKey && mousedown) return false;
         
         if(mouseMiddle) return false; // middle
         
